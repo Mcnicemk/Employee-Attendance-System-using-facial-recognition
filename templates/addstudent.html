@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!--for active showing in the navigatio  bar-->
+{% block addstudent_active %}
+    active
+{% endblock %}
+
+<!--for color change in the navigatio toggle bar-->
+{% block addstudent_active_color %}
+    active
+{% endblock %}
+
+<!--for displaying which page we are in-->
+{% block main_hearder %}
+        Add Student
+{% endblock %}
+
+{% block main_hearder_t %}
+        Add Student
+{% endblock %}
+
+<!--for showing the path-->
+{% block nv %}
+    students >  addstudent
+{% endblock %}
+
+{% block content %}
+<div class="row">
+<!-- left column -->
+<div class="col-md-6">
+
+<!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Enter Stuff Details</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form"  action="{% url 'create' %}">
+                {% csrf_token %}
+
+              <div class="box-body">
+                  <div class="form-group">
+                  <label>Registration Number</label>
+                  <input type="text" class="form-control" placeholder="s123n" name="reg_no"  required>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Name</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter name" name="name" required>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Surname</label>
+                  <input type="text" class="form-control" id="exampleInputPassword1" name="surname" placeholder="Enter Surname" required>
+                </div>
+
+                  <div class="form-group">
+                  <label>Country</label>
+                  <input type="text" class="form-control" placeholder="Enter country" name="country" required>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Address</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" name="address" placeholder="Enter Address" required>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Email</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter Email" required>
+                </div>
+
+                  <div class="form-group">
+                  <label>Phone</label>
+                  <input type="number" class="form-control" placeholder="Enter Phone" name="phone" required>
+                </div>
+                   <div class="form-group">
+                  <input type="hidden" class="form-control" placeholder="Enter Phone" name="picture" required>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Department</label>
+
+                    <select class="form-control" name="department" required>
+                        <option > </option>
+                    <option value="Software Engineering">Software Engineering</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Information System Assurance">Information System Assurance</option>
+                    <option>option 5</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Year</label>
+                    <select class="form-control" name="year" required>
+                        <option> </option>
+                    <option value="1"> 1</option>
+                    <option value="2"> 2</option>
+                    <option value="3"> 3</option>
+                    <option value="4"> 4</option>
+
+                  </select>
+                </div>
+
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.box -->
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block teacher_active %}
+    active
+{% endblock %}
+
+<!--for color change in the navigatio toggle bar-->
+{% block teacher_active_color %}
+    active
+{% endblock %}
+
+{% block main_hearder %}
+        Stuff
+{% endblock %}
+
+{% block main_hearder_t %}
+        Stuff
+{% endblock %}
+
+
+{% block nv %}
+    Stuff
+{% endblock %}
+
+{% block content %}
+<div class="row">
+<!-- left column -->
+<div class="col-md-6">
+
+
+<!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Registration form</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form"  action="{% url 'lec_create' %}">
+                {% csrf_token %}
+
+              <div class="box-body">
+                  <div class="form-group">
+                  <label>Stuff ID</label>
+                  <input type="text" class="form-control" placeholder="l123n" name="l_id" required>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Name</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter name" name="l_name" required>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Surname</label>
+                  <input type="text" class="form-control" id="exampleInputPassword1" name="l_surname" placeholder="Enter Surname" required>
+                </div>
+
+                  <div class="form-group">
+                  <label>Country</label>
+                  <input type="text" class="form-control" placeholder="Enter country" name="l_country" required>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Address</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" name="l_address" placeholder="Enter Address" required>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Email</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" name="l_email" placeholder="Enter Email" required>
+                </div>
+
+                  <div class="form-group">
+                  <label>Phone</label>
+                  <input type="number" class="form-control" placeholder="Enter Phone" name="l_phone" required>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Faculty</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" name="l_faculty" placeholder="Enter Department" required>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputFile">Picture</label>
+                  <input type="file" id="exampleInputFile" name="l_picture">
+
+                  <p class="help-block">Profile picture for Stuff.</p>
+                </div>
+
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modal-info">Submit</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.box -->
+
+</div>
+
+</div>
+
+
+     <div class="modal modal-info fade" id="modal-info">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Prossesing Our Dataset</h4>
+              </div>
+              <div class="modal-body">
+                <p>Quantifying faces&hellip;</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline">Stop Process</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+{% endblock %}

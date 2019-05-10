@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+<!--for active showing in the navigatio  bar-->
+{% block addadmin_active %}
+    active
+{% endblock %}
+
+<!--for color change in the navigatio toggle bar-->
+{% block addadmin_active_color %}
+    active
+{% endblock %}
+
+{% block main_hearder %}
+        Add New Admin
+{% endblock %}
+{% block main_hearder_t %}
+        Add New Admin
+{% endblock %}
+
+
+{% block nv %}
+    administration >  add_admin
+{% endblock %}
+
+{% block content %}
+<div class="row">
+<!-- left column -->
+<div class="col-md-6">
+
+<!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Enter Admin Details</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form"  action="{% url 'create' %}">
+                {% csrf_token %}
+
+              <div class="box-body">
+                  <div class="form-group">
+                  <label>Admin Id</label>
+                  <input type="text" class="form-control" placeholder="Enter Admin id..."  name="admin_id"  required>
+                </div>
+                  <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" class="form-control" placeholder="Enter Admin name..."  name="name"  required>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Surname</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter surname..." name="surname" required>
+                </div>
+
+                  <div class="form-group">
+                  <label>Country</label>
+                  <input type="text" class="form-control" placeholder="Enter country" name="country" required>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Address</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" name="address" placeholder="Enter Address" required>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Email</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter Email" required>
+                </div>
+
+                  <div class="form-group">
+                  <label>Phone</label>
+                  <input type="number" class="form-control" placeholder="Enter Phone" name="phone" required>
+                </div>
+                  <div class="form-group">
+                  <label for="exampleInputFile">Picture</label>
+                  <input type="file" id="exampleInputFile" name="a_picture">
+
+                  <p class="help-block">Profile picture for Stuff.</p>
+                </div>
+
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.box -->
+
+</div>
+
+</div>
+
+{% endblock %}

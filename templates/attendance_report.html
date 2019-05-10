@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+<!--for active showing in the navigatio  bar-->
+{% block attendance_report_active %}
+    active
+{% endblock %}
+
+{% block attendance_active_color %}
+    active
+{% endblock %}
+
+{% block main_hearder %}
+        Attendance Report
+{% endblock %}
+
+{% block main_hearder_t %}
+        Attendance Report
+{% endblock %}
+
+
+{% block nv %}
+    Attendance Report
+{% endblock %}
+
+{% block content %}
+
+     <div class="row">
+        <div class="col-xs-12">
+          <div class="box box-default">
+            <div class="box-header with-border">
+              <!--<h3 class="box-title">  </h3>-->
+            </div>
+            <div class="box-body">
+              <!--<a href="{% url 'graphs' %}"> <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-info">
+                Graphs
+              </button></a>-->
+              <a href="{% url 'excel' %}"><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">
+                Excel
+              </button></a>
+              <a href="{% url 'csv' %}"><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-warning">
+                Csv
+              </button></a>
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
+                Send An Email
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+<div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Daily Reports</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                   <th>Date</th>
+                   <th>Stuff Name</th>
+                   <!--<th>Time In</th>-->
+                     <th>Recognition Time</th>
+                   <th>Status</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for att_re in att_re %}
+                <tr>
+                  <td>{{ att_re.day }}</td>
+                  <td>{{ att_re.l_id}} </td>
+                  <!--<td>{{ att_re.time_in }}</td>-->
+                 <td>{{ att_re.time_out }}</td>
+                  <td>{% if att_re.status == "Present" %} <p style=" color: #00a65a;">{{ att_re.status  }}</p> {% else %} <p style=" color: red;">{{ att_re.status  }}</p> {% endif %}</td>
+
+                </tr>
+                {% endfor %}
+
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>Date</th>
+                   <th>Stuff Name</th>
+                   <!--<th>Time In</th>-->
+                    <th>Recognition Time</th>
+                   <th>Status</th>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+</div>
+
+
+     <div class="modal modal-success fade" id="modal-success">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Send Attendance To an Email</h4>
+              </div>
+                 <form role="form"  action="{% url 'email' %}">
+                {% csrf_token %}
+              <div class="modal-body">
+                   <input type="email" class="form-control" name="email_data" id="exampleInputEmail1" placeholder="Enter email" required>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-outline">Send</button>
+              </div>
+                 </form>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+{% endblock %}

@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+<!--for active showing in the navigatio  bar-->
+{% block training_active_color %}
+    active
+{% endblock %}
+
+{% block training_active %}
+    active
+{% endblock %}
+
+{% block main_hearder %}
+        System Train
+{% endblock %}
+
+{% block main_hearder_t %}
+        System Train
+{% endblock %}
+
+
+{% block nv %}
+    System Train
+{% endblock %}
+
+{% block content %}
+ <div class="row">
+        <div class="col-md-6">
+          <!-- Block buttons -->
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"> Train System</h3>
+            </div>
+              <form action="{% url 'train' %}" method="POST">
+        {% csrf_token %}
+            <div class="box-body">
+                <button  id="progress-bar-trigger" type="submit" name="submit" value="ss" class="btn btn-block btn-primary btn-lg" data-toggle="modal" data-target="#modal-info">Start</button>
+            </div>
+              </form>
+          </div>
+          <!-- /.box -->
+        </div>
+    </div>
+
+     <div class="row">
+        <div class="col-md-6">
+          <!-- Block buttons -->
+          <div class="box">
+            <div class="box-header">
+                <h3>Progress</h3>
+              <h3 class="box-title"> {{ info1 }}</h3>
+<!--
+                <div class='progress-wrapper'>
+  <div id='progress-bar' class='progress-bar' style="background-color: #68a9ef; width: 0%;">&nbsp;</div>
+</div>
+<div id="progress-bar-message">Waiting for progress to start...</div>
+
+                 test code-->
+
+                <div class='progress-wrapper'>
+  <div id='progress-bar' class='progress-bar' style="background-color: #68a9ef; width: 0%;">&nbsp;</div>
+</div>
+<div id="progress-bar-message">Waiting for progress to start...</div>
+
+
+
+                 <!-- test code-->
+
+
+            </div>
+          </div>
+          <!-- /.box -->
+        </div>
+    </div>
+
+
+      <div class="modal modal-info fade" id="modal-info">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Prossesing Our Dataset</h4>
+
+
+          <div class="box box-info">
+            <div class="box-header">
+              <h3 class="box-title">Training in Process</h3>
+            </div>
+            <div class="box-body">
+
+            </div>
+            <!-- /.box-body -->
+            <!-- Loading (remove the following to stop the loading)-->
+            <div class="overlay">
+              <i class="fa fa-refresh fa-spin"></i>
+            </div>
+            <!-- end loading -->
+          </div>
+          <!-- /.box -->
+
+
+              </div>
+              <div class="modal-body">
+                <p> Wait While Training Finishes . . .</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline">Stop Process</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+
+    <script src="{% static 'celery_progress/celery_progress.js' %}"></script>
+    <script> /*
+function updateProgress(progressBarElement, progressBarMessageElement, progress) {
+  progressBarElement.style.width = progress.percent + "%";
+  progressBarMessageElement.innerHTML = progress.current + ' of ' + progress.total + ' processed.';
+}
+
+var trigger = document.getElementById('progress-bar-trigger');
+trigger.addEventListener('click', function(e) {
+  var bar = document.getElementById("progress-bar");
+  var barMessage = document.getElementById("progress-bar-message");
+  for (var i = 0; i < 101; i++) {
+    setTimeout(updateProgress, 500 * i, bar, barMessage, {
+      percent: 1 * i,
+      current: 1 * i,
+      total: 100
+    })
+  }
+})*/
+</script>
+
+    <script>
+
+
+    </script>
+{% endblock %}

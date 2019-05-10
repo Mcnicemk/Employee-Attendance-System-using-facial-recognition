@@ -1,0 +1,129 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>S.S.S | Welcome</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css'%}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'bower_components/font-awesome/css/font-awesome.min.css'%}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="{% static 'bower_components/Ionicons/css/ionicons.min.css'%}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/AdminLTE.min.css'%}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{% static 'plugins/iCheck/square/blue.css'%}">
+
+     <!-- Top icon -->
+    <link rel="icon" type="image/jpg" href="{% static 'images/icon.png'%}"/>
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition " style="background-image:url({% static 'images/tumble.gif' %}); background-size: 50%;">
+<div class="login-box">
+  <div class="login-logo">
+      <a href="{% url 'index' %}"><b><p style="color:white;">Smart Surveillance System</p></b></a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+      <div style="text-align: center;"><img src="{% static 'images/img.png'%}"></div>
+      <p class="login-box-msg" style="color:#367fa9;"><b>Admin Sign In</b></p>
+      <p class="login-box-msg" style="color:red;"><b>{{ msg }}</b></p>
+      <p class="login-box-msg" style="color:red;"><b>{{ msg1 }}</b></p>
+      <h4 class="login-box-msg" style="color:#367fa9;"><b><a href="{% url 'index' %}">{{ try1 }}</a></b></h4>
+
+
+{% if form.errors %}
+      <p>Wrong Username or Password</p>
+{% endif %}
+   {% if next %}
+       <p>you cant access that page</p>
+  {% endif %}
+
+
+    <form action="{% url 'index' %}" method="POST">
+        {% csrf_token %}
+
+        {% if form.error %}
+        <p> there error</p>
+        {% endif %}
+      <div class="form-group has-feedback">
+          {{MyLoginForm.email}}
+        <!--<input type="email" class="form-control" placeholder="Email">-->
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+          {{MyLoginForm.password}}
+        <!--<input type="password" class="form-control" placeholder="Password">-->
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> Remember Me
+            </label>
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+            <a href="{% url 'index' %}" > <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button></a>
+            <input type="hidden" name="next" value="{{ next }}">
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+    <!-- /.social-auth-links -->
+
+    <a href="#" data-toggle="modal" data-target="#modal-info">I forgot my password</a><br>
+
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+
+ <div class="modal modal-info fade" id="modal-info">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Forgot Password</h4>
+              </div>
+              <div class="modal-body">
+                   <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline">Send</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+<!-- jQuery 3 -->
+<script src="{% static 'bower_components/jquery/dist/jquery.min.js'%}"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="{% static 'bower_components/bootstrap/dist/js/bootstrap.min.js'%}"></script>
+<!-- iCheck -->
+<script src="{% static 'plugins/iCheck/icheck.min.js'%}"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' /* optional */
+    });
+  });
+</script>
+</body>
+</html>

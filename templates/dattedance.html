@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+<!--for active showing in the navigatio  bar-->
+{% block dattendance_active %}
+    active
+{% endblock %}
+
+{% block main_hearder %}
+        Daily Attendance
+{% endblock %}
+
+{% block main_hearder_t %}
+        Daily Attendance
+{% endblock %}
+
+
+{% block nv %}
+    Daily Attendance
+{% endblock %}
+
+{% block content %}
+ <div class="row">
+        <div class="col-md-6">
+          <!-- Block buttons -->
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"> Take Stuff Attendance</h3>
+            </div>
+              <form action="{% url 'recog' %}" method="POST">
+        {% csrf_token %}
+            <div class="box-body">
+                <button  type="submit" name="submit" value="ss" class="btn btn-block btn-primary btn-lg">Take Attendance</button>
+            </div>
+              </form>
+          </div>
+          <!-- /.box -->
+        </div>
+
+ <div class="col-md-6">
+          <!-- Block buttons
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"> Insert Time For Recording Attendance (in Seconds)</h3>
+            </div>
+              <form action="{% url 'timeframe' %}" method="POST">
+        {% csrf_token %}
+                   <div class="box-body">
+                  <input type="number" name="time_f" class="form-control" placeholder="Time in seconds....eg 2">
+                   </div>
+            <div class="box-body">
+                <button  type="submit" name="submit" value="ss" class="btn btn-block btn-primary btn-lg">Submit</button>
+            </div>
+              </form>
+          </div>
+          <!-- /.box -->
+        </div>
+    </div>
+
+
+{% endblock %}
