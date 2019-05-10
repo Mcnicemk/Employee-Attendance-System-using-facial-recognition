@@ -4,10 +4,14 @@ Employee Attendance System using facial recognition mark attendance of employees
 
 
 Tools Used:
+
 Django framework for handling user Interface
+
 Python for Backend
 
 Face_recognition Api
+
 Dlib
+
 Open Cv
 
